@@ -4,26 +4,27 @@
     <meta charset="utf-8" />
     <title>Fragments UI</title>
     <link rel="stylesheet" href="https://unpkg.com/bamboo.css" />
+    <script type="module" src="./api.js"></script>
     <script type="module" src="./app.js"></script>
   </head>
   <body>
     <h1>Fragments UI</h1>
     <section>
-      <nav><button id="login">Login</button> <button id="logout">Logout</button></nav>
+      <nav>
+        <button id="login">Login</button> <button id="logout">Logout</button>
+      </nav>
     </section>
     <section hidden id="user">
       <h2>Hello <span class="username"></span>!</h2>
 
-      <button id="getFragmentBtn">Get User Fragments</button>
-      <br/>
-      <br/>
-      <!-- <form action="submitTextFragment()"> -->
-        <label for="text-submission">
-          Fragment Body:</label
-        ><br />
-        <input type="input" id="textFragmentInput" name="fragmentText" />
+      <button id="getFragmentButton">Get User Fragments</button>
+      <br />
+      <br />
+      <!-- <form action="postFragment()"> -->
+      <label for="text-submission"> Fragment Body:</label><br />
+      <input type="input" id="postFragment" name="fragmentText" />
 
-        <button id="textFragmentBtn">Submit</button>
+      <button id="postFragmentButton">Submit</button>
       <!-- </form> -->
     </section>
   </body>
