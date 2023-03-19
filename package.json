@@ -4,8 +4,9 @@
   "version": "0.0.1",
   "description": "Fragments UI testing web app",
   "scripts": {
-    "start": "parcel src/index.html",
-    "build": "parcel build src/index.html",
+    "start": "npx parcel build src/index.html",
+    "build": "npx parcel build src/index.html",
+    "serve": "parcel serve src/index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -16,10 +17,7 @@
   "license": "UNLICENSED",
   "devDependencies": {
     "buffer": "^5.7.1",
-    "parcel": "^2.8.3",
-    "process": "^0.11.10",
-    "punycode": "^1.4.1",
-    "querystring-es3": "^0.2.1"
+    "parcel": "^2.8.3"
   },
   "dependencies": {
     "aws-amplify": "^5.0.10",
