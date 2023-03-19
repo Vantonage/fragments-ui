@@ -32,7 +32,6 @@ Amplify.configure({
     },
   },
 });
-
 /**
  * Get the authenticated user
  * @returns Promise<user>
