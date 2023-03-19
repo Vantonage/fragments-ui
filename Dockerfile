@@ -13,6 +13,8 @@ PORT=8080
 
 WORKDIR /app
 
+RUN npm install parcel-bundler
+
 COPY package*.json ./
 
 RUN npm ci --only=production
