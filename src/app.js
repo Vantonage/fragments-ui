@@ -16,7 +16,8 @@ async function init() {
   //Submit button
   postFragmentButton.onclick = () => {
     // console.log("text", postFragment.value)
-    postUserFragments(user, postFragment.value);
+    var type = document.getElementById("type").value;
+    postUserFragments(user, postFragment.value, type);
   };
   getFragmentButton.onclick = () => {
     getUserFragments(user);
