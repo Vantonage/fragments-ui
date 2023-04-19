@@ -49,3 +49,47 @@ export async function postUserFragments(user, fragment, type) {
     console.error("Unable to call POST /v1/fragment", { err });
   }
 }
+
+// delete fragment by id
+export async function deleteUserFragment(user, id) {
+  console.log("Delete fragment");
+  try {
+    const res = await fetch(`${apiUrl}/v1/fragments/${id}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${user.idToken}`,
+      },
+    });
+    if (!res.ok) {
+      throw new Error(`${res.status} ${res.statusText}`);
+    }
+    console.log("Deleted user fragments data");
+  } catch (err) {
+    console.error("Unable to call DELETE /fragment", { err });
+  }
+}
+
+
+// put fragment by id
+export async function putUserFragment(user, id, type, body) {
+  console.log("Updating fragment data");
+  try {
+    const res = await fetch(`${apiUrl}/v1/fragments/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": type,
+        Authorization: `Bearer ${user.idToken}`,
+      },
+      body: body,
+    });
+    if (!res.ok) {
+      throw new Error(`${res.status} ${res.statusText}`);
+    }
+    console.log("Updated user fragments data");
+  } catch (err) {
+    console.error("Unable to call PUT /fragment. Wrong type", { err });
+  }
+}
+
+
+

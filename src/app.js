@@ -2,7 +2,7 @@
 
 import { Auth, getUser } from "./auth";
 // modifications to src/app.js
-import { getUserFragments, postUserFragments } from "./api";
+import { getUserFragments, postUserFragments, deleteUserFragment, putUserFragment } from "./api";
 
 async function init() {
   // Get our UI elements
@@ -13,14 +13,42 @@ async function init() {
   const postFragment = document.querySelector("#postFragment");
   const getFragmentButton = document.querySelector("#getFragmentButton");
 
+  // delete
+  const deleteFragmentButton = document.querySelector("#delete");
+
+  // put/update
+  const fragment_id = document.querySelector("#fragment_id");
+  const update_body = document.querySelector("#update_body");
+  const putButton = document.querySelector("#update");
+
   //Submit button
   postFragmentButton.onclick = () => {
     // console.log("text", postFragment.value)
     var type = document.getElementById("type").value;
-    postUserFragments(user, postFragment.value, type);
+    if (type == "image/png" || type == "image/jpeg" || type == "image/webp" || type == "image/gif")
+    {
+      let data = document.getElementById("file").files[0];
+      postUserFragments(user, data, type);
+    }
+    else{
+      postUserFragments(user, postFragment.value, type);
+    }
   };
   getFragmentButton.onclick = () => {
     getUserFragments(user);
+  };
+
+  deleteFragmentButton.onclick = () => {
+    deleteUserFragment(user, fragments_id.value);
+  };
+
+  putButton.onclick = async () => {
+    putUserFragment(
+      user,
+      fragment_id.value,
+      document.getElementById("type").value,
+      update_body.value
+    );
   };
 
   // Wire up event handlers to deal with login and logout.
@@ -56,6 +84,15 @@ async function init() {
   loginBtn.disabled = true;
   // Do an authenticated request to the fragments API server and log the result
   getUserFragments(user);
+
+
+
+  // Conversion
+  
+  // const convertButton = document.querySelector("#conversion");
+  // convertButton.onclick = () => {
+
+  // }
 }
 
 // Wait for the DOM to be ready, then start the app
